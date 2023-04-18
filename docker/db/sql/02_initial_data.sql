@@ -1,0 +1,2 @@
+INSERT INTO `tasks` (`title`, `class`) VALUES ("sample-task-01", "jugyo");
+INSERT INTO `users` (`name`, `email_id`,`user_auth`, `password`, `last_time`) VALUES ("maruko", "hoge", "hoge", "pw", "2021-01-01 08:50:00.000");

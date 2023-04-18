@@ -1,0 +1,42 @@
+{{ template "header2" . }}
+
+  <div class="signup">
+    <ul>
+        <li class="title">TiTableへようこそ</li>
+        <li>作成するアカウント情報を入力してください</li>
+      <form action="/signup" method="POST" class="login_form">
+        <li><label for="name">ユーザー名</label></li>
+        <li><input class="form" type="text" name="user" placeholder="User Name" required></li>
+        <li><div class="warn">{{ .InfoUser }}</div></li>
+        <li>
+          <div class="tooltip">
+            <label for="password">パスワード</label>
+            <div class="description">TiTableにログインするためのパスワードです</div>
+          </div>
+        </li>
+        <li><input class="form" type="password" name="pw" placeholder="Password" required></li>
+        <li>
+          <div class="tooltip">
+            <label for="email">共通メール認証ID</label>
+            <div class="description">Tokyo Tech Portal -> dynamic menu -> メール関連サービス -> 共通メール認証ID</div>
+          </div>
+        </li>
+        <li><input class="form" type="text" name="mail" placeholder="Email" required></li>
+        <li><div class="warn">{{ .InfoMail }}</div></li>
+        <li><label for="authrize">ポータルパスワード</label></li>
+        <li><input class="form" type="password" name="user_auth" placeholder="Authrize" required></li>
+        <li>
+          <div class="tooltip">
+            <label for="icalender">iカレンダーのURL</label>
+            <div class="description">OCW-iからiCalendar連携URL（SSH非対応用）を取得してください</div>
+          </div>
+        </li>
+        <li><input class="form" type="text" name="iurl" placeholder="Ical" required></li>
+        <li><input class="form_button" type="submit" value="Create Account"></li>
+        <li><a href="javascript:history.back();" class="back">BACK</a></li>
+      </form>
+    </ul>
+  </div>
+
+</body>
+</html>

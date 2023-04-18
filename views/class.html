@@ -1,0 +1,98 @@
+{{ template "header" . }}
+
+
+<div>
+  <div>
+    <p class="title">Detail</p>
+  </div>
+  <div class="row">
+    <div>
+      <div>
+      {{$class := .Class}}
+      <table class="class_detail">
+        <tr>
+          <th>授業名</th>
+          <td>{{ $class.Class }}</td>
+        </tr>
+        <tr>
+          <th>授業開始時刻</th>
+          <td>{{ $class.Start }}</td>
+        </tr>
+        <tr>
+          <th>授業終了時刻</th>
+          <td>{{ $class.End }}</td>
+        </tr>
+        {{if .CommentFlag }}
+        <tr>
+          <th>コメント</th>
+          <td>{{ $class.Comment }}</td>
+        </tr>
+        {{ end }}
+        {{if .URLFlag }}
+        <tr>
+            <th>ZOOM URL</th>
+            <td><a href="{{ $class.URL }}">{{ $class.URL }}</a></td>
+        </tr>
+        {{ end }}
+      </table>
+      </div>
+      <div>
+      <ul>
+        <form action="/NewComment" method="POST">
+          <li>
+            <label for="detail"></label>
+            <input class="form" type="text" name="detail" placeholder="detail">
+          </li>
+          <li>
+            <input class="edit_button" type="submit" value="コメントを追加する">
+          </li>
+        </form>
+      </ul>
+      </div>
+    </div>
+    <div>
+    <div class="row">
+      <div>
+        <table class="task_class">
+          <tr>
+            <th>タスク一覧</th>
+          </tr>
+          {{ range $task := .Tasks }}
+            {{ if $task.IsDone }}
+            <tr>
+              <td>
+            {{ else }}
+              <tr class="yet">
+              <td>
+            {{ end }}
+                <a href="/task/{{ $task.ID }}">{{ $task.Title }}</a><br>
+                <a href="/task/{{ $task.ID }}">{{ $task.DeadlineAt }}</a><br>
+                <a href="/task/{{ $task.ID }}">
+                <img src="../assets/fire.png" width="40" height="40">
+                {{ if lt  1  $task.TaskLevel}}
+                    <img src="../assets/fire.png" width="40" height="40">
+                {{ end }}
+                {{ if lt  2  $task.TaskLevel}}
+                    <img src="../assets/fire.png" width="40" height="40">
+                {{ end }}
+                {{ if lt  3  $task.TaskLevel}}
+                    <img src="../assets/fire.png" width="40" height="40">
+                {{ end }}
+                {{ if lt  4 $task.TaskLevel}}
+                    <img src="../assets/fire.png" width="40" height="40">
+                {{ end }}</a><br>
+            </tr>
+          {{ end }}
+        </table>
+      </div>
+      <div>
+          <a class="plus_button" href="/NewTask">+</a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+</body>
+</html>

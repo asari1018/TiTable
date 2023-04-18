@@ -1,0 +1,59 @@
+{{ template "header" . }}
+
+  <div class="account">
+    <div>
+      <p class="title">{{ .User.Name }}さんのアカウント情報を編集する</p>
+    </div>
+    <div>
+      <form action="/accountedit" method="POST">
+        <table class="account_list">
+          <tr>
+            <th>ユーザー名</th>
+            <td>
+              <label for="user"></label>
+              <input class="form" type="text" placeholder="New User Name" name="user">
+            </td>
+            <td>
+              <input class="edit_button" type="submit" value="ユーザー名を変更">
+            </td>
+          </tr>
+          <tr>
+              <th>パスワード</th>
+              <td>
+                <label for="pw"></label>
+                <input class="form" type="password" placeholder="New Password" name="pw">
+              </td>
+              <td>
+                <input class="edit_button" type="submit" value="パスワードを変更">
+              <td>
+          </tr>
+          <tr>
+            <th>共通メール認証ID</th>
+            <td>
+              <label for="email_id"></label>
+              <input class="form" type="text" placeholder="New Mail ID" name="email_id">
+            </td>
+            <td>
+              <input class="edit_button" type="submit" value="認証IDを変更">
+            <td>
+          </tr>
+          <tr>
+            <th>iCalendar URLを変更</th>
+            <td>
+              <label for="iurl"></label>
+              <input class="form" type="text" placeholder="New iCalendar URL" name="iurl">
+            </td>
+            <td>
+              <input class="edit_button" type="submit" value="iCalendarを変更">
+            <td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div>
+      <a href="/cancel" class="bye_button">アカウント消去</a>
+    </div>
+  </div>
+
+</body>
+</html>

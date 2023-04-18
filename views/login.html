@@ -1,0 +1,29 @@
+{{ template "header2" . }}
+
+  <div class="login">
+    <ul>
+    <li class="title">LOGIN</li>
+      <form action="/login" method="POST" class="login_form">
+        <li>
+          <label for="name"></label>
+          <input class="form" type="text" name="user" placeholder="User Name" required>
+        </li>
+        <li>
+          <label for="password"></label>
+          <input class="form" type="password" name="pw" placeholder="Password" required>
+        </li>
+        <li>
+          <div class="warn">{{ .Info }}</div>
+        </li>
+        <li>
+          <input class="form_button" type="submit" value="LOGIN">
+        </li>
+        <li>
+          <a href="javascript:history.back();" class="back">BACK</a>
+        </li>
+      </form>
+    </ul>
+  </div>
+
+</body>
+</html>

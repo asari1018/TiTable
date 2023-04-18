@@ -1,0 +1,85 @@
+{{ template "header" . }}
+
+<link rel="stylesheet" type="text/css" href="../assets/main.css" />
+
+<div class="row" class="main">
+
+  <div>
+    <div class="main_top">
+      <div><p class="title">Calendar</p></div>
+      <div class="row_center">
+          <div><a href="/main/{{ .LastWeek }}" class="week_button">LaskWeek</a></div>
+          <div>{{ .YearMonth }}</div>
+          <div><a href="/main/{{ .NextWeek }}" class="week_button">NextWeek</a></div>
+      </div>
+    </div>
+    <div>
+      <table class="calendar">
+        <thead>
+          <tr class="week">
+            <th rowspan="2" class="null">&nbsp;</th>
+            <th>
+              <font color="#ff9a92">Sun</font>
+            </th>
+            <th>Mon</th>
+            <th>tue</th>
+            <th>wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>
+              <font color="#7d9cff">Sat</font>
+            </th>
+          </tr>
+          <tr class="dayNum">
+            {{ range .DateRange }}
+            <th>{{ . }}</th>
+            {{ end }}
+          </tr>
+        </thead>
+        <tbody>
+          {{ .CalBody }}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <div class="main_top">
+      <div><p class="title">ToDoList</p></div>
+    </div>
+    <div>
+      <table class="task_top">
+        {{ range $task := .Tasks }}
+        {{ if $task.IsDone }}
+            <tr >
+              {{ else }}
+              {{ end }}
+          <td>
+            <a href="/task/{{ $task.ID }}" class="task_title">{{ $task.Title }}</a><br>
+            <a href="/task/{{ $task.ID }}">{{ $task.Class }}</a><br>
+            <a href="/task/{{ $task.ID }}">{{ $task.DeadlineAt }}</a><br>
+            <a href="/task/{{ $task.ID }}">
+            <img src="../assets/fire.png" width="30" height="30">
+            {{ if lt  1  $task.TaskLevel}}
+                <img src="../assets/fire.png" width="30" height="30">
+            {{ end }}
+            {{ if lt  2  $task.TaskLevel}}
+                <img src="../assets/fire.png" width="30" height="30">
+            {{ end }}
+            {{ if lt  3  $task.TaskLevel}}
+                <img src="../assets/fire.png" width="30" height="30">
+            {{ end }}
+            {{ if lt  4 $task.TaskLevel}}
+                <img src="../assets/fire.png" width="30" height="30">
+            {{ end }}</a><br>
+          </td>
+        </tr>
+        {{ end }}
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

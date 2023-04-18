@@ -1,0 +1,47 @@
+{{ template "header" . }}
+
+  <div>
+    <div>
+      <p class="title">{{ .ClassName }}のタスク登録</p>
+    </div>
+    <div class="tasks">
+      <form action="/taskinsertedit" method="POST">
+        <input type="hidden" name="id" value="{{ .task.ID }}">
+        <table class="task_in">
+          <tr>
+              <th>タイトル</th>
+              <td>
+                <label for="title"></label>
+                <input class="form" type="text" placeholder="Title" name="title">
+              </td>
+          </tr>
+          <tr>
+              <th>締め切り</th>
+              <td>
+                <label for="deadline"></label>
+                <input class="form" type="datetime-local" placeholder="New Deadline" name="deadline">
+              </td>
+          </tr>
+          <tr>
+              <th>難易度</th>
+              <td>
+                  <label for="level"></label>
+                    <select name="level">
+                        <option value="1">Level 1</option>
+                        <option value="2">Level 2</option>
+                        <option value="3">Level 3</option>
+                        <option value="4">Level 4</option>
+                        <option value="5">Level 5</option>
+                    </select>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div>
+        <input class="form_button" type="submit" value="タスクを登録">
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

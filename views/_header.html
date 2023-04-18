@@ -1,0 +1,34 @@
+{{ define "header" }}
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>{{ .Title }}</title>
+    <!-- font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" type="text/css" href="../assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/form_button.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/list.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../assets/script.js"></script>
+    
+  </head>
+
+  <body>
+
+  <header>
+    <h1 class="head_logo"><a href="/main">TiTable</a></h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="/account">USER INFO</a></li>
+        <li><a href="/logout">LOG OUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<body>
+{{ end }}

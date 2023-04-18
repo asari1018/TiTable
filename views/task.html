@@ -1,0 +1,102 @@
+{{ template "header" . }}
+
+  <div class="tasks">
+    <div>
+      <p class="title">タスクの詳細</p>
+    </div>
+    <div>
+    <form action="/taskedit" method="POST">
+    {{$task := .Task}}
+    <table class="task_detail">
+      <tr>
+          <th>タイトル</th>
+          <td>{{ $task.Title }}</td>
+          <td>
+            <label for="title"></label>
+            <input class="form" type="text" placeholder="New Title" name="title">
+          </td>
+          <td>
+            <input class="edit_button" type="submit" value="タイトルを変更">
+            <input type="hidden" name="id" value="{{ .task.ID }}">
+          </td>
+      </tr>
+      <tr>
+          <th>授業名</th>
+          <td>{{ $task.Class }}</td>
+      </tr>
+      <tr>
+          <th>登録時刻</th>
+          <td>{{ $task.CreatedAt }}</td>
+      </tr>
+      <tr>
+          <th>締め切り</th>
+          <td> {{ $task.DeadlineAt }}</td>
+          <td>
+            <label for="deadline"></label>
+            <input class="form" type="datetime-local" placeholder="New Deadline" name="deadline">
+          </td>
+          <td>
+            <input class="edit_button" type="submit" value="締め切りを変更">
+            <input type="hidden" name="id" value="{{ .task.ID }}">
+          </td>
+      </tr>
+      <tr>
+          <th>難易度</th>
+          <td>
+            <img src="../assets/fire.png" width="40" height="40">
+            {{ if lt  1  $task.TaskLevel}}
+                <img src="../assets/fire.png" width="40" height="40">
+            {{ end }}
+            {{ if lt  2  $task.TaskLevel}}
+                <img src="../assets/fire.png" width="40" height="40">
+            {{ end }}
+            {{ if lt  3  $task.TaskLevel}}
+                <img src="../assets/fire.png" width="40" height="40">
+            {{ end }}
+            {{ if lt  4 $task.TaskLevel}}
+                <img src="../assets/fire.png" width="40" height="40">
+            {{ end }}<br>
+          <td>
+            <label for="level"></label>
+              <select name="level">
+                  <option value="1">Level 1</option>
+                  <option value="2">Level 2</option>
+                  <option value="3">Level 3</option>
+                  <option value="4">Level 4</option>
+                  <option value="5">Level 5</option>
+              </select>
+      </td>
+          <td>
+            <input class="edit_button" type="submit" value="レベルを変更">
+            <input type="hidden" name="id" value="{{ .task.ID }}">
+          </td>
+      </tr>
+      <tr></form>
+          <th>状態</th>
+          <td>{{ if $task.IsDone }}済{{ else }}未{{ end }}<td>
+          <td>
+            {{ if $task.IsDone }}
+            <form action="/undone" method="POST">
+              <input class="edit_button" type="submit" value="タスクを未完にする">
+              <input type="hidden" name="id" value="{{ .task.ID }}">
+            </form>
+            {{ else }}
+            <form action="/done" method="POST">
+              <input class="edit_button" type="submit" value="タスクを済にする">
+              <input type="hidden" name="id" value="{{ .task.ID }}">
+            </form>
+            {{ end }}
+          </td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <form action="/taskdelete" method="POST">
+      <input class="bye_button" type="submit" value="タスクを削除する">
+      <input type="hidden" name="id" value="{{ .task.ID }}">
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
